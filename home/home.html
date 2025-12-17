@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>AKLTECH</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="homecss.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="AKLTECH LOGO.jpg">
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="../home/home.html" class="logo">AKLTECH</a>
+        
+        <div class="menu-toggle" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </div>
+
+        <nav class="navig">
+            <ul>
+                <li><a href="../login/login.html">Register</a></li>
+                <li><a href="../tracking/tracking.html">Tracking</a></li>
+                <li><a href="#about-us">About us</a></li>
+                <li><a href="#footerr">Contact us</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <section class="main">
+
+        <div class="vertical-sections">
+    
+            <section class="hero-section hero-1">
+                <div class="section-content">
+                    <h2 class="typewriter-text">
+                        WELCOME TO THE AKLTECH SYSTEM
+                    </h2>
+                    <button class="animated-button" onclick="document.getElementById('options').scrollIntoView({behavior: 'smooth'})">
+                        TRY NOW!
+                    </button>
+                </div>
+            </section>
+    
+        </div>
+    </section>
+
+<section class="hero-section hero-2" id="options">
+        <div class="options-container">
+            <div class="options-header">
+                <h2 class="section-title">Start Your Experience</h2>
+                <p class="section-subtitle">Select your preferred dining mode to explore our menu</p>
+            </div>
+
+            <div class="dining-grid">
+                <div onclick="selectDiningMode('dine_in')" class="dining-card">
+                    <div class="d-icon"><i class="fas fa-utensils"></i></div>
+                    <div class="card-content">
+                        <h4>Dine-in</h4>
+                        <p>Enjoy the atmosphere inside our restaurant</p>
+                    </div>
+                    <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
+                </div>
+
+                <div onclick="selectDiningMode('take_away')" class="dining-card">
+                    <div class="d-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <div class="card-content">
+                        <h4>Take-away</h4>
+                        <p>Order ahead and pick up your meal</p>
+                    </div>
+                    <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
+                </div>
+
+                <div onclick="selectDiningMode('delivery')" class="dining-card">
+                    <div class="d-icon"><i class="fas fa-truck-fast"></i></div>
+                    <div class="card-content">
+                        <h4>Delivery</h4>
+                        <p>Fast delivery directly to your doorstep</p>
+                    </div>
+                    <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
+                </div>
+
+                <div onclick="selectDiningMode('reservation')" class="dining-card">
+                    <div class="d-icon"><i class="fas fa-calendar-check"></i></div>
+                    <div class="card-content">
+                        <h4>Reservation</h4>
+                        <p>Book your exclusive table in advance</p>
+                    </div>
+                    <div class="arrow-icon"><i class="fas fa-arrow-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <section class="hero-section hero-3" id="about-us">
+        <div class="about-container">
+            <div class="about-header">
+                <h2 class="section-title">Who We Are</h2>
+                <p class="about-intro">
+                    AKLTECH is redefining the dining experience. We bridge the gap between gastronomy and technology through an 
+                    <span class="highlight">AI-Powered Ecosystem</span> designed for the modern restaurant.
+                </p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="f-icon"><i class="fas fa-brain"></i></div>
+                    <h3>AI Intelligence</h3>
+                    <p>Advanced demand forecasting and smart decision-making algorithms to optimize your restaurant's workflow.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="f-icon"><i class="fas fa-vr-cardboard"></i></div>
+                    <h3>Immersive UX</h3>
+                    <p>Interactive 3D reservation system and personalized recommendations for a unique customer journey.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="f-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Real-Time Sync</h3>
+                    <p>Seamless WebSocket integration connecting Manager, Cashier, and Kitchen dashboards instantly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<footer class="site-footer" id="footerr">
+    <div class="footer-container">
+        <div class="footer-row">
+            
+            <div class="footer-col">
+                <h4>Soical media</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Get Help</h4>
+                <ul>
+
+                    <p class="issue-text">Faced an issue?</p>
+                    <a href="#" class="contact-link">Contact Us <i class="fas fa-arrow-right"></i></a>
+                </ul>
+            </div>
+
+        </div>
+        
+        <hr class="footer-divider">
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+    <script src="home.js"></script>
+</body>
+</html>

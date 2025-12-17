@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Tracking - AKLTECH</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="tracking.css">
+    <link rel="icon" href="AKLTECH LOGO.jpg">
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="../home/home.html" class="logo">AKLTECH</a>
+        <nav class="navig">
+            <ul>
+                <li><a href="../product/menu.html">Menu</a></li>
+                <li><a href="#footerr">Contact us</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="page-wrapper">
+        <div class="main-container">
+            
+            <div class="page-header">
+                <h2><i class="fa-solid fa-list-check"></i> My Orders</h2>
+            </div>
+
+            <div class="tabs-wrapper">
+                <button class="tab-btn active" onclick="switchTab('active')">Active Orders</button>
+                <button class="tab-btn" onclick="switchTab('history')">History</button>
+            </div>
+
+            <div id="active-view">
+                <div id="orders-container">
+                    </div>
+                
+                <div id="no-active-msg" class="empty-content hidden">
+                    <div class="icon-circle"><i class="fa-solid fa-receipt"></i></div>
+                    <h2>No Active Orders</h2>
+                    <p>You don't have any ongoing orders.</p>
+                </div>
+            </div>
+
+            <div id="history-view" class="hidden">
+                <div id="history-container">
+                    </div>
+                
+                <div id="no-history-msg" class="empty-content hidden">
+                    <div class="icon-circle"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                    <h2>No History</h2>
+                    <p>Your past orders will show up here.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="site-footer" id="footerr">
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <h4>Social Media</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <p class="issue-text">Faced an issue?</p>
+                        <a href="#" class="contact-link">Contact Us</a>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-bottom">
+                <p>&copy; 2025 AKLTECH. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="tracking.js"></script>
+</body>
+</html>

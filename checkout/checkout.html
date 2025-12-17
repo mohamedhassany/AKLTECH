@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout - AKLTECH</title>
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="AKLTECH LOGO.jpg">
+</head>
+<body>
+
+    <header class="checkout-header">
+        <div class="container nav-flex">
+            <a href="#" id="dynamic-back-link" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i> <span>Back</span>
+            </a>
+            
+            <div class="brand-logo" onclick="window.location.href='../home/home.html'" style="cursor: pointer;">
+                AKLTECH
+            </div>
+            <div class="secure-badge"><i class="fa-solid fa-lock"></i> Payment</div>
+        </div>
+    </header>
+
+    <main class="container" id="main-checkout-view">
+        
+        <div class="steps-wrapper">
+            <div class="step active"><span>1</span> Order</div>
+            <div class="line active"></div>
+            <div class="step active"><span>2</span> Details</div>
+            <div class="line"></div>
+            <div class="step"><span>3</span> Done</div>
+        </div>
+
+        <div class="checkout-layout">
+            
+            <div class="form-column">
+                
+                <section class="card-box">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-location-dot"></i> Order Type</h3>
+                        <span class="mode-badge" id="order-mode-badge">LOADING...</span>
+                    </div>
+                    <div class="card-body" id="dynamic-order-details">
+                        </div>
+                </section>
+
+                <section class="card-box">
+                    <div class="card-header">
+                        <h3><i class="fa-regular fa-credit-card"></i> Payment Method</h3>
+                    </div>
+                    <div class="payment-grid">
+                        <label class="payment-card selected">
+                            <input type="radio" name="payment" value="card" checked>
+                            <div class="p-content">
+                                <div class="p-icon"><i class="fa-brands fa-cc-visa"></i></div>
+                                <span>Credit Card</span>
+                                <i class="fa-solid fa-circle-check check-mark"></i>
+                            </div>
+                        </label>
+
+                        <label class="payment-card">
+                            <input type="radio" name="payment" value="cash">
+                            <div class="p-content">
+                                <div class="p-icon"><i class="fa-solid fa-wallet"></i></div>
+                                <span>Cash</span>
+                                <i class="fa-solid fa-circle-check check-mark"></i>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div id="card-details-form" class="cc-form show">
+                        <div class="input-row">
+                            <input type="text" placeholder="Card Number" class="modern-input">
+                        </div>
+                        <div class="input-row split">
+                            <input type="text" placeholder="MM / YY" class="modern-input">
+                            <input type="text" placeholder="CVC" class="modern-input">
+                        </div>
+                    </div>
+                </section>
+
+                <section class="card-box">
+                    <div class="card-header">
+                        <h3><i class="fa-solid fa-basket-shopping"></i> Review Items</h3>
+                    </div>
+                    <div class="items-scroll-list" id="checkout-items-list">
+                        </div>
+                </section>
+
+            </div>
+
+            <div class="summary-column">
+                <div class="summary-card">
+                    <h3>Order Summary</h3>
+                    
+                    <div class="summary-details">
+                        <div class="s-row"><span>Subtotal</span> <span id="summ-subtotal">$0.00</span></div>
+                        <div class="s-row"><span>Service / Tax (10%)</span> <span id="summ-tax">$0.00</span></div>
+                        <div class="divider"></div>
+                        <div class="s-row total"><span>Total Amount</span> <span id="summ-total">$0.00</span></div>
+                    </div>
+
+                    <button class="pay-btn-main" onclick="processPayment(this)">
+                        <span class="btn-text">Confirm & Pay <span id="btn-total">$0.00</span></span>
+                        <div class="spinner"></div>
+                    </button>
+                    
+                    <p class="terms-text"><i class="fa-solid fa-shield-halved"></i> Data is encrypted and secure.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer" id="footerr">
+        <div class="footer-container">
+            <div class="footer-row">
+                <div class="footer-col">
+                    <h4>Social Media</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <p class="issue-text">Faced an issue?</p>
+                        <a href="#" class="contact-link">Contact Us <i class="fas fa-arrow-right"></i></a>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="footer-bottom">
+                <p>&copy; 2025 AKLTECH. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="checkout.js"></script>
+</body>
+</html>

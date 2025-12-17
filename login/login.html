@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKLTECH Authentication</title>
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" href="AKLTECH LOGO.jpg">
+</head>
+<body>
+
+    <div class="container" id="container">
+        
+        <div class="navbar">
+            <a href="../home/home.html" class="logo">AKLTECH</a>
+            
+            <nav class="navig">
+                <ul>
+                </ul>
+            </nav>
+        </div>
+        
+        <div class="form-container sign-up-container">
+            <form id="signupForm">
+                <div class="mobile-logo">
+                    <i class="fa-solid fa-layer-group"></i> AKLTECH
+                </div>
+                <div class="header-text">
+                    <br>
+                    <h2>Join AKLTECH Today!✨</h2>
+                </div>
+                
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-signature"></i>
+                        <input type="text" placeholder="Full name" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-envelope"></i>
+                        <input type="email" placeholder="Email address" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Phone</label>
+                    <div class="input-wrapper">
+                        <i class="fa fa-phone"></i>
+                        <input type="phone" placeholder="phone" required>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <div class="buttons-group">
+                    <button type="submit" class="btn-login">Sign up <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                
+                <p class="footer-copy mobile-only">Already have an account? <span class="ghost-link" id="signInMobile">Login</span>.</p>
+                
+            </form>
+        </div>
+
+        <div class="form-container sign-in-container">
+            <form id="loginForm">
+                <div class="mobile-logo">
+                    <i class="fa-solid fa-layer-group"></i> AKLTECH
+                </div>
+                <div class="header-text">
+                    <h2>Welcome Back! 👋</h2>
+                </div>
+                
+                <div class="input-group">
+                    <label>Username</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-user"></i>
+                        <input type="text" placeholder="Username" required>
+                    </div>
+                </div>
+                
+                <div class="input-group">
+                    <label>Password</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-lock"></i>
+                        <input type="password" placeholder="••••••••" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <label class="remember-me">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" class="forgot-pass">Forgot Password?</a>
+                </div>
+
+                <div class="buttons-group">
+                    <button type="submit" class="btn-login">Login</button>
+                </div>
+                
+                <p class="footer-copy">© 2025 AKLTECH. All rights reserved.</p>
+                <p class="footer-copy mobile-only">Don't have an account? <span class="ghost-link" id="signUpMobile">Sign up</span>.</p>
+            </form>
+        </div>
+
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <div class="brand-showcase">
+                        <i class="fa-solid fa-utensils logo-icon"></i>
+                        <h1>Welcome Back!</h1>
+                        <p>To keep connected with us please login with your personal info</p>
+                        <button class="btn-sign secondary-btn ghost" id="signIn">Login</button>
+                    </div>
+                    <div class="circle c1"></div>
+                    <div class="circle c2"></div>
+                </div>
+
+                <div class="overlay-panel overlay-right">
+                    <div class="brand-showcase">
+                        <i class="fa-solid fa-utensils logo-icon"></i>
+                        <h1>AKLTECH</h1>
+                        <p>The ultimate POS system for modern restaurants.</p>
+                        <button class="btn-sign secondary-btn ghost" id="signUp">Sign Up</button>
+                    </div>
+                    <div class="circle c1"></div>
+                    <div class="circle c2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="login.js"></script>
+</body>
+</html>

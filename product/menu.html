@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKLTECH - Premium Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="menu.css">
+        <link rel="icon" href="AKLTECH LOGO.jpg">
+
+</head>
+<body>
+
+    <div class="navbar">
+        <a href="../home/home.html" class="logo">AKLTECH</a>
+        <nav class="navig">
+            <ul>
+                <li>
+                    <a href="#" onclick="toggleCart()" class="cart-icon-wrapper">
+                        <i class="fa-solid fa-basket-shopping"></i>
+                        <span id="cart-count">0</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <section class="menu-header">
+        <div class="header-content">
+            <h1>Culinary Excellence</h1>
+            <p>Experience the perfect blend of tradition and modern taste.</p>
+        </div>
+    </section>
+
+    <div class="ai-wrapper">
+        <section class="ai-section">
+            <div class="ai-content">
+                <div class="ai-text">
+                    <div class="ai-icon"><i class="fa-solid fa-robot"></i></div>
+                    <div>
+                        <h2>Can't Decide?</h2>
+                        <p>Let our AI Chef curate a dish just for your mood.</p>
+                    </div>
+                </div>
+                <button class="ai-btn" onclick="startAIFlow()">Ask AI Chef <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </section>
+    </div>
+
+    <section class="menu-container">
+        
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="filterMenu('all')">All Menu</button>
+            <button class="tab-btn" onclick="filterMenu('Appetizers')">Appetizers</button>
+            <button class="tab-btn" onclick="filterMenu('Main Dishes')">Main Courses</button>
+            <button class="tab-btn" onclick="filterMenu('Desserts')">Desserts</button>
+            <button class="tab-btn" onclick="filterMenu('Drinks')">Beverages</button>
+        </div>
+
+        <div class="menu-grid" id="menu-grid">
+            </div>
+    </section>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button onclick="toggleCart()" class="close-cart">&times;</button>
+        </div>
+        
+        <div class="cart-items" id="cart-items">
+            <p class="empty-msg">Your cart is empty.</p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="proceedToTable()">Proceed to Table Selection</button>
+        </div>
+    </div>
+
+    <div id="ai-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeAIModal()">&times;</span>
+            <div id="ai-question-container">
+                <div class="ai-modal-header">
+                    <i class="fa-solid fa-sparkles"></i>
+                    <h3>AI Recommendation</h3>
+                </div>
+                <h2 id="ai-question-text">Question goes here...</h2>
+                <div id="ai-options" class="ai-options-grid"></div>
+            </div>
+        </div>
+    </div>
+
+<footer class="site-footer" id="footerr">
+    <div class="footer-container">
+        <div class="footer-row">
+            
+            <div class="footer-col">
+                <h4>Soical media</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Get Help</h4>
+                <ul>
+
+                    <p class="issue-text">Faced an issue?</p>
+                    <a href="#" class="contact-link">Contact Us <i class="fas fa-arrow-right"></i></a>
+                </ul>
+            </div>
+
+        </div>
+        
+        <hr class="footer-divider">
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="menu.js"></script>
+</body>
+</html>
