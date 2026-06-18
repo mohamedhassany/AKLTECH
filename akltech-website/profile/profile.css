@@ -1,0 +1,419 @@
+/* ================= GLOBAL RULES ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* ================= FONTS ================= */
+@font-face { 
+    font-family: myfont; 
+    src: url(docktrin.ttf); 
+}
+
+/* ================= GENERAL & BACKGROUND ================= */
+body {
+    background-color: #0a0a0b; /* لون أسود عميق */
+    /* 1. إضاءة متدرجة دافئة في الأركان (دهبي وبنفسجي)
+       2. شبكة خطوط هندسية خفيفة جداً تدي طابع عصري */
+    background-image: 
+        radial-gradient(circle at 15% 40%, rgba(228, 185, 91, 0.05), transparent 50%),
+        radial-gradient(circle at 85% 70%, rgba(79, 70, 229, 0.05), transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 100%, 35px 35px, 35px 35px;
+    background-attachment: fixed;
+    color: #fff;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* إعدادات مشتركة لأشكال المطعم في الخلفية */
+body::before, body::after {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: fixed;
+    z-index: -1;
+    pointer-events: none;
+    /* استخدام clamp يضمن إن الحجم يكون مناسب للموبايل (120px) والكمبيوتر (300px) */
+    font-size: clamp(120px, 20vw, 300px);
+    opacity: 0.4; /* لتصبح أكثر وضوحاً */
+}
+
+/* أيقونة الشوكة والسكينة (يمين) */
+body::before {
+    content: "\f2e7"; 
+    color: #E4B95B; /* لون دهبي */
+    top: 15%;
+    right: -2%;
+    animation: floatRight 6s ease-in-out infinite alternate;
+}
+
+/* أيقونة البرجر (شمال) */
+body::after {
+    content: "\f805"; 
+    color: #4f46e5; /* لون بنفسجي */
+    bottom: 10%;
+    left: -2%;
+    animation: floatLeft 8s ease-in-out infinite alternate-reverse;
+}
+
+/* ================= BACKGROUND ANIMATIONS ================= */
+@keyframes floatRight {
+    0% { transform: translateY(0) rotate(15deg); }
+    100% { transform: translateY(-30px) rotate(25deg); }
+}
+
+@keyframes floatLeft {
+    0% { transform: translateY(0) rotate(-15deg); }
+    100% { transform: translateY(-30px) rotate(-5deg); }
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    background-color: rgba(10, 10, 11, 0.8);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    padding: 15px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(15px);
+    /* إضافة Hardware Acceleration لحل مشكلة توقف المتصفح */
+    will-change: transform;
+    transform: translateZ(0);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.3s;
+}
+
+.logo {
+    text-decoration: none;
+    color: #fff;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-family: myfont, sans-serif;
+    letter-spacing: 2px;
+}
+
+.navig ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+}
+
+.navig ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    position: relative;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.navig ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background-color: #E4B95B;
+    transform: scaleX(0);
+    transition: 0.3s;
+}
+
+.navig ul li a:hover { color: #E4B95B; }
+.navig ul li a:hover::after { transform: scaleX(1); }
+
+.menu-toggle {
+    display: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* ================= PROFILE SECTIONS ================= */
+.profile-container {
+    max-width: 1100px;
+    margin: 120px auto 100px; 
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* كارت البيانات - Glassmorphism Style */
+.user-info-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    /* إضافة Hardware Acceleration لحل مشكلة توقف المتصفح */
+    will-change: transform;
+    transform: translateZ(0);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.user-avatar i {
+    font-size: 90px;
+    color: #E4B95B;
+    filter: drop-shadow(0 0 15px rgba(228, 185, 91, 0.3));
+}
+
+.user-details h2 { 
+    margin: 0; 
+    font-size: 2.2rem; 
+    letter-spacing: 1px;
+}
+
+.user-details p { 
+    color: #888; 
+    margin: 8px 0; 
+    font-size: 1.1rem;
+}
+
+/* ================= ORDER HISTORY & FILTER ================= */
+.order-history { 
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    /* إضافة Hardware Acceleration لحل مشكلة توقف المتصفح */
+    will-change: transform;
+    transform: translateZ(0);
+    border-radius: 20px; 
+    padding: 30px; 
+    border: 1px solid rgba(255, 255, 255, 0.05); 
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.history-header h3 { 
+    margin: 0; /* تم تعديل المارجن عشان يبقى مع الفلتر على خط واحد */
+    color: #E4B95B; 
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.history-header h3::before {
+    content: "\f46d"; /* أيقونة تاريخ من FontAwesome */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
+.filter-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.month-filter-input {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    color-scheme: dark; /* بيجبر متصفحات زي Chrome تظهر الكاليندر باللون الغامق */
+    transition: 0.3s;
+}
+
+.month-filter-input:hover, .month-filter-input:focus {
+    border-color: #E4B95B;
+}
+
+.clear-btn {
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    background: transparent;
+    color: #ff4757;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.clear-btn:hover {
+    background: rgba(255, 71, 87, 0.1);
+}
+
+.table-container { 
+    overflow-x: auto; 
+}
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    text-align: left; 
+}
+
+th, td { 
+    padding: 18px; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+}
+
+th { 
+    color: #E4B95B; 
+    text-transform: uppercase; 
+    font-size: 0.75rem; 
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+td {
+    color: #ccc;
+    font-size: 0.95rem;
+}
+
+tr:hover { 
+    background: rgba(255, 255, 255, 0.03); 
+}
+
+/* ================= FOOTER (CSS Only) ================= */
+#footerr.site-footer {
+    background: linear-gradient(135deg, #0a0a0b 0%, #16161d 100%);
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: #b0b0b0;
+    padding: 60px 0 20px;
+    font-size: 14px;
+}
+
+/* خطوط مائلة خفيفة للفوتر */
+#footerr.site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 1px, transparent 1px, transparent 10px);
+    pointer-events: none;
+}
+
+#footerr .footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+    position: relative;
+}
+
+#footerr .footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#footerr .footer-col {
+    width: 30%; 
+    margin-bottom: 30px;
+}
+
+#footerr .footer-col h4 {
+    font-size: 18px;
+    color: #ffffff;
+    margin-bottom: 25px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+#footerr .footer-col h4::before {
+    content: '';
+    position: absolute;
+    left: 0; bottom: 0;
+    background-color: #E4B95B;
+    height: 2px;
+    width: 40px;
+}
+
+#footerr .footer-col ul li a {
+    color: #888;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+#footerr .footer-col ul li a:hover {
+    color: #E4B95B;
+    transform: translateX(5px);
+}
+
+#footerr .social-links a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-color: rgba(255,255,255,0.05);
+    margin-right: 10px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: 0.3s;
+}
+
+#footerr .social-links a:hover {
+    background-color: #E4B95B;
+    color: #000;
+    transform: translateY(-5px);
+}
+
+#footerr .footer-divider {
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    margin: 30px 0 20px;
+}
+
+#footerr .footer-bottom {
+    text-align: center;
+    color: #555;
+}
+
+/* ================= MEDIA QUERIES ================= */
+@media screen and (max-width: 900px) {
+    .navbar { padding: 15px 25px; }
+    .menu-toggle { display: block; }
+    .navig {
+        position: absolute;
+        top: 100%; right: 0; width: 100%; 
+        background: rgba(10, 10, 11, 0.98);
+        border-top: 1px solid rgba(255,255,255,0.1);
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.5s ease;
+    }
+    .navig.active { max-height: 400px; }
+    .navig ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .profile-container { margin-top: 100px; }
+    .user-info-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+    }
+    .user-details h2 { font-size: 1.8rem; }
+    .footer-col { width: 100% !important; text-align: center; }
+    .footer-col h4::before { left: 50%; transform: translateX(-50%); }
+}

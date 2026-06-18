@@ -1,0 +1,312 @@
+:root {
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --text-dark: #0f172a;
+    --text-gray: #64748b;
+    --bg-light: #f8fafc;
+    --white: #ffffff;
+    --border: #e2e8f0;
+    --gradient-bg: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+}
+@font-face { font-family: myfont; src: url(docktrin.ttf); }
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #f6f5f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.navbar {
+    background-color: #00000006;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    padding: 10px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.logo {
+    text-decoration: none;
+    color: #fff;
+    font-size: clamp(2rem, 4vw, 3rem); /* حجم متجاوب */
+    font-family: myfont, sans-serif;
+    font-weight: 200;
+}
+
+.navig ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navig ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.navig ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background-color: #E4B95B;
+    transform: scaleX(0);
+    transition: 0.3s;
+}
+
+.navig ul li a:hover { color: #E4B95B; }
+.navig ul li a:hover::after { transform: scaleX(1); }
+
+
+/* --- الهيكل الرئيسي للحركة --- */
+.container {
+    background-color: #0D1B2A; /* لون الخلفية الداكن الخاص بك */
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+            0 10px 10px rgba(0,0,0,0.22);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100vh;
+}
+
+.form-container {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    transition: all 0.6s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 50px;
+}
+
+.form-container form {
+    background-color: #0D1B2A; /* نفس لون الخلفية */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 50px;
+    height: 100%;
+    text-align: center;
+    width: 100%;
+    max-width: 450px; /* لضبط عرض الفورم */
+}
+
+/* حركة التبديل */
+.sign-in-container {
+    left: 0;
+    width: 50%;
+    z-index: 2;
+}
+
+.container.right-panel-active .sign-in-container {
+    transform: translateX(100%);
+}
+
+.sign-up-container {
+    left: 0;
+    width: 50%;
+    opacity: 0;
+    z-index: 1;
+}
+
+.container.right-panel-active .sign-up-container {
+    transform: translateX(100%);
+    opacity: 1;
+    z-index: 5;
+    animation: show 0.6s;
+}
+
+@keyframes show {
+    0%, 49.99% {
+        opacity: 0;
+        z-index: 1;
+    }
+    50%, 100% {
+        opacity: 1;
+        z-index: 5;
+    }
+}
+
+/* --- جزء الصورة (Overlay) --- */
+.overlay-container {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+    transition: transform 0.6s ease-in-out;
+    z-index: 100;
+}
+
+.container.right-panel-active .overlay-container {
+    transform: translateX(-100%);
+}
+
+.overlay {
+    background-image: url('back1.jpg'); /* صورتك */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0 0;
+    color: #FFFFFF;
+    position: relative;
+    left: -100%;
+    height: 100%;
+    width: 200%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+}
+/* طبقة التظليل فوق الصورة */
+.overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.85); /* تظليل داكن كما في تصميمك */
+    z-index: 0;
+}
+
+.container.right-panel-active .overlay {
+    transform: translateX(50%);
+}
+
+.overlay-panel {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    transform: translateX(0);
+    transition: transform 0.6s ease-in-out;
+    z-index: 1; /* فوق طبقة التظليل */
+}
+
+.overlay-left {
+    transform: translateX(-20%);
+}
+
+.container.right-panel-active .overlay-left {
+    transform: translateX(0);
+}
+
+.overlay-right {
+    right: 0;
+    transform: translateX(0);
+}
+
+.container.right-panel-active .overlay-right {
+    transform: translateX(20%);
+}
+
+/* --- تصميم العناصر الداخلية (مطابق لتصميمك 100%) --- */
+
+.header-text { margin-bottom: 30px; width: 100%; text-align: left;}
+.header-text h2 { font-size: 2rem; color: white; margin-bottom: 10px; font-weight: 800; letter-spacing: -1px; }
+
+.input-group { margin-bottom: 20px; width: 100%; text-align: left; }
+.input-group label { display: block; margin-bottom: 8px; font-weight: 600; color: white; font-size: 0.9rem; }
+
+.input-wrapper {
+    position: relative; border: 1px solid var(--border); border-radius: 12px;
+    background: var(--bg-light); transition: all 0.3s ease; display: flex; align-items: center;
+}
+.input-wrapper:focus-within { border-color: var(--primary); background: var(--white); box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1); }
+.input-wrapper i { padding: 0 16px; color: #94a3b8; transition: 0.3s; font-size: 1.1rem; }
+.input-wrapper:focus-within i { color: var(--primary); }
+.input-wrapper input {
+    width: 100%; padding: 16px 16px 16px 0; border: none; background: transparent;
+    font-family: inherit; font-size: 1rem; color: var(--text-dark); outline: none;
+}
+
+.form-actions { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.9rem; width: 100%; }
+.remember-me { color: var(--text-gray); cursor: pointer; display: flex; align-items: center; gap: 8px; }
+.forgot-pass { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+.buttons-group { width: 100%; margin-top: 10px; }
+.btn-login {
+    width: 100%;
+    padding: 16px; background: var(--gradient-bg); color: white;
+    border: none; border-radius: 12px; font-size: 1rem; font-weight: 600; cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s; display: flex; justify-content: center; align-items: center; gap: 10px;
+}
+.btn-login:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3); }
+
+/* زرار التبديل الشفاف (Ghost Button) */
+button.ghost {
+    background-color: transparent;
+    border-color: #FFFFFF;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid white;
+    color: white;
+    margin-top: 20px;
+    width: auto;
+    padding: 12px 40px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+button.ghost:hover {
+    background: white;
+    color: var(--primary);
+}
+
+.brand-showcase h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
+.brand-showcase p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 20px; font-weight: 400; line-height: 1.6; }
+.logo-icon { font-size: 3.5rem; margin-bottom: 20px; color: #818cf8; }
+
+.circle { position: absolute; border-radius: 50%; background: linear-gradient(to right, var(--primary), #818cf8); opacity: 0.2; pointer-events: none;}
+.c1 { width: 300px; height: 300px; top: -50px; left: -50px; }
+.c2 { width: 400px; height: 400px; bottom: -100px; right: -100px; }
+
+.footer-copy { margin-top: 30px; color: #cbd5e1; font-size: 0.8rem; }
+.mobile-logo { display: none; font-size: 1.5rem; font-weight: 800; color: var(--primary); margin-bottom: 20px; align-items: center; gap: 10px; }
+.mobile-only { display: none; }
+.ghost-link { color: var(--primary); font-weight: bold; cursor: pointer; text-decoration: underline;}
+
+/* --- Responsive (Mobile) --- */
+@media (max-width: 768px) {
+    .container { height: auto; min-height: 100vh; }
+    .overlay-container { display: none; } /* إخفاء الصورة في الموبايل */
+    .form-container { width: 100%; position: relative; height: auto; min-height: 100vh; padding: 40px 20px;}
+    .sign-in-container { transform: none !important; width: 100%; }
+    .sign-up-container { transform: none !important; width: 100%; display: none; opacity: 1; z-index: 5;}
+    
+    /* عند تفعيل وضع Signup في الموبايل */
+    .container.right-panel-active .sign-in-container { display: none; }
+    .container.right-panel-active .sign-up-container { display: flex; }
+
+    .mobile-logo { display: flex; }
+    .mobile-only { display: block; }
+}

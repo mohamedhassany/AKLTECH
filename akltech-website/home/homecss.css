@@ -1,0 +1,781 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif; /* تم تصحيح اسم الخط */
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: #000;
+}
+
+/* ================= FONTS ================= */
+/* تأكد من وجود ملفات الخطوط في المسار الصحيح */
+@font-face { font-family: myfont; src: url(docktrin.ttf); }
+@font-face { font-family: myfont2; src: url(PlayfairDisplay-VariableFont_wght.ttf); }
+@font-face { font-family: myfont3; src: url(collegeb.ttf); }
+@font-face { font-family: myfont4; src: url(Mermaid1001.ttf); }
+
+/* ================= NAVBAR ================= */
+.navbar {
+    background-color: #00000006;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    padding: 10px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    backdrop-filter: blur(10px);
+    transition: 0.3s;
+}
+
+.logo {
+    text-decoration: none;
+    color: #fff;
+    font-size: clamp(2rem, 4vw, 3rem); /* حجم متجاوب */
+    font-family: myfont, sans-serif;
+    font-weight: 200;
+}
+
+.navig ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.navig ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.navig ul li a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background-color: #E4B95B;
+    transform: scaleX(0);
+    transition: 0.3s;
+}
+
+.navig ul li a:hover { color: #E4B95B; }
+.navig ul li a:hover::after { transform: scaleX(1); }
+
+/* زر القائمة للموبايل (مخفي في الشاشات الكبيرة) */
+.menu-toggle {
+    display: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* ================= HERO SECTIONS ================= */
+.hero-section {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 5%; /* هوامش جانبية نسبية */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    text-align: center;
+}
+
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.section-content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* BACKGROUNDS */
+.hero-1 { background-image: url("background.png"); }
+.hero-2 { background-image: url("offer-background.jpg"); }
+.hero-3 { background-image: url("daytime_bg.jpeg"); }
+
+/* ================= TEXT STYLING ================= */
+/* استخدام clamp للتحكم في حجم الخطوط تلقائياً */
+.hero-1 h2 {
+    font-size: clamp(2rem, 6vw, 5rem);
+    font-weight: 900;
+    font-family: myfont2, sans-serif;
+    color: white;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-2 h2 {
+    font-size: clamp(1.8rem, 4vw, 3.5rem);
+    font-weight: 300;
+    font-family: myfont4, sans-serif;
+    margin-bottom: 40px;
+}
+
+.hero-3 h2 {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-family: myfont, sans-serif;
+    margin-bottom: 20px;
+    font-weight: 300;
+
+}
+
+.hero-3 .text-container p {
+    font-size: clamp(1rem, 1.5vw, 1.3rem);
+    font-weight: 400;
+    line-height: 1.6;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: justify;
+    text-align-last: center;
+}
+
+/* ================= BUTTON ================= */
+.animated-button {
+    padding: 15px 30px;
+    margin-top: 30px; /* مسافة من النص أعلاه */
+    font-size: 1.2em;
+    font-weight: bold;
+    color: white;
+    background-color: #E4B95B; /* لون جذاب */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    border: 2px solid #000000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    overflow: hidden;
+
+    
+    /* حالة الاختفاء الأولية */
+    opacity: 0;
+    transform: translateY(20px); /* يبدأ من أسفل قليلاً */
+    pointer-events: none; /* لمنع التفاعل معه وهو مخفي */
+}
+.animated-button.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+  
+
+/* حالة الزر عند المرور عليه بالماوس (Hover) */
+.animated-button:hover {
+    background-color: #E4B95B;
+    transform: translateY(18px) scale(1.05); /* حركة خفيفة للأعلى والتكبير */
+    box-shadow: 0 0 20px #E4B95B;
+
+}
+
+/* حالة الظهور المُنشَّطة بواسطة JavaScript */
+.animated-button.visible {
+    opacity: 1;
+    transform: translateY(0); /* يصل لمكانه الأصلي */
+    transition: opacity 0.5s ease-out, transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    /* الـ cubic-bezier يعطي تأثير "نط" أو bounce لطيف */
+    pointer-events: auto; /* السماح بالتفاعل معه */
+}
+.animated-button span {
+    position: relative;
+    z-index: 10;
+    transition: color 0.4s;
+}
+
+
+.animated-button:hover span {
+    /* تعديل: لون النص عند التغطية أصبح ghostwhite ليكون مرئيًا على الخلفية السوداء */
+    color: rgb(255, 255, 255); 
+}
+
+.animated-button::before,
+.animated-button::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.animated-button::before {
+    content: "TRY NOW!";
+    display: flex;
+    justify-content: center; /* Horizontal */
+    align-items: center;
+    /* لون التغطية: أسود */
+    background: #000000; 
+    width: 120%;
+    left: -10%;
+    transition: transform 0.4s cubic-bezier(0.3, 1, 0.8, 1);
+    
+
+}
+
+.animated-button:hover::before {
+    transform: translate3d(100%, 0, 0);
+}
+/* ================= DINING OPTIONS (GRID) ================= */
+.dining-options {
+    display: grid;
+    /* تحسين الشبكة لتكون أكثر مرونة */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.dining-card {
+    background: rgba(255, 255, 255, 0.95);
+    color: #1c2340;
+    border-radius: 16px;
+    padding: 30px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+.dining-card:hover {
+    transform: translateY(-10px);
+}
+
+.dining-card .icon {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.dining-card h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* General Font Setting */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Footer Basics - REDUCED PADDING here */
+#footerr.site-footer {
+background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.95)), 
+                      url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop');    
+    background-size: cover;      /* عشان الصورة تغطي المساحة كلها */
+    background-position: center; /* سنترة الصورة */
+    background-repeat: no-repeat;
+    
+    /* بقية الخواص القديمة زي ما هي */
+    color: #b0b0b0;
+    padding: 40px 0 15px;
+    font-size: 14px;
+    line-height: 1.5;
+    direction: ltr;
+    text-align: left;
+}
+
+#footerr .footer-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+#footerr .footer-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Columns - INCREASED WIDTH (Since we have 3 cols now) */
+#footerr .footer-col {
+    width: 30%; /* كان 22% */
+    margin-bottom: 20px;
+}
+
+#footerr .footer-col h4 {
+    font-size: 17px;
+    color: #ffffff;
+    text-transform: capitalize;
+    margin-bottom: 20px;
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+#footerr .footer-col h4::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    background-color: #E4B95B;
+    height: 2px;
+    box-sizing: border-box;
+    width: 40px;
+}
+
+#footerr .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#footerr .footer-col ul li:not(:last-child) {
+    margin-bottom: 8px; /* قللت المسافات بين الروابط */
+}
+
+#footerr .footer-col ul li a {
+    font-size: 14px;
+    text-transform: capitalize;
+    color: #b0b0b0;
+    text-decoration: none;
+    font-weight: 400;
+    transition: all 0.3s ease;
+    display: block;
+}
+
+#footerr .footer-col ul li a:hover {
+    color: #ffffff;
+    padding-left: 5px;
+}
+
+/* New Support/Contact Section Styling */
+#footerr .support-box {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+#footerr .issue-text {
+    margin: 0 0 5px 0;
+    font-size: 13px;
+    color: #888;
+}
+
+#footerr .contact-link {
+    color: #E4B95B; /* نفس لون البراند */
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s;
+}
+
+#footerr .contact-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+#footerr .contact-link i {
+    font-size: 12px;
+    margin-left: 5px;
+}
+
+/* Social Icons */
+#footerr .social-links a {
+    display: inline-block;
+    height: 35px; /* صغرت الايقونات شوية */
+    width: 35px;
+    background-color: rgba(255,255,255,0.1);
+    margin-right: 8px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 50%;
+    color: #ffffff;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+#footerr .social-links a:hover {
+    color: #1a1a1a;
+    background-color: #ffffff;
+    transform: translateY(-3px);
+}
+
+/* Divider */
+#footerr .footer-divider {
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 15px 0; /* قللت المسافة */
+}
+
+#footerr .footer-bottom {
+    text-align: center;
+    color: #777;
+    font-size: 13px;
+}
+
+/* Responsive */
+@media(max-width: 767px) {
+    #footerr .footer-col {
+        width: 100%; /* خليتها 100% عشان الموبايل يبقى أوضح */
+        text-align: center;
+        margin-bottom: 25px;
+    }
+    #footerr .footer-col h4::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+/* ================= IMPROVED ABOUT US SECTION ================= */
+
+/* تعديل الخلفية لتكون أكثر عتامة لزيادة وضوح النص */
+.hero-3::before {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.8), rgba(0,0,0,0.9));
+}
+
+.about-container {
+    width: 100%;
+    max-width: 1200px;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.about-header {
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-family: myfont, sans-serif;
+    color: #E4B95B; /* اللون الذهبي */
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.about-intro {
+    font-size: 1.1rem;
+    color: #ddd;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.about-intro .highlight {
+    color: #E4B95B;
+    font-weight: bold;
+}
+
+/* --- Features Grid System --- */
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* تصميم الكارت الزجاجي */
+.feature-card {
+    background: rgba(255, 255, 255, 0.05); /* شفافية */
+    backdrop-filter: blur(10px); /* تأثير الضباب */
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px 30px;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+/* تأثير عند المرور بالماوس */
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(228, 185, 91, 0.15); /* ظل ذهبي خفيف */
+    border-color: #E4B95B;
+}
+
+.feature-card .f-icon {
+    font-size: 3rem;
+    color: #E4B95B;
+    margin-bottom: 25px;
+    transition: transform 0.3s;
+}
+
+.feature-card:hover .f-icon {
+    transform: scale(1.1);
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.6;
+}
+/* ================= IMPROVED DINING OPTIONS (HERO-2) ================= */
+
+/* تعتيم الخلفية لزيادة تباين النصوص */
+.hero-2::before {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.9));
+}
+
+.options-container {
+    width: 100%;
+    max-width: 1200px;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.options-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+/* استخدام نفس تنسيق العنوان الذهبي لتوحيد الشكل */
+.options-header .section-title {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-family: myfont, sans-serif;
+    color: #E4B95B;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.section-subtitle {
+    color: #ccc;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
+
+/* --- Dining Grid --- */
+.dining-grid {
+    display: grid;
+    /* ضبط الأعمدة لتكون مرنة: 4 بجانب بعض في الشاشات الكبيرة */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+
+/* --- Card Style (Glassmorphism) --- */
+.dining-card {
+    background: rgba(255, 255, 255, 0.03); /* شفافية عالية جداً */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* تأثير التفاعل (Hover) */
+.dining-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #E4B95B;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* تنسيق الأيقونات الرئيسية */
+.dining-card .d-icon {
+    font-size: 2.5rem;
+    color: #fff;
+    background: rgba(228, 185, 91, 0.1); /* دائرة خلفية خفيفة */
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    transition: 0.4s;
+}
+
+.dining-card:hover .d-icon {
+    background: #E4B95B; /* تتحول للذهبي عند الماوس */
+    color: #000;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.dining-card h4 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 8px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.dining-card p {
+    font-size: 0.9rem;
+    color: #aaa;
+    line-height: 1.4;
+    margin-bottom: 20px;
+}
+
+/* أيقونة السهم الصغيرة في الأسفل */
+.dining-card .arrow-icon {
+    margin-top: auto;
+    color: #E4B95B;
+    font-size: 1.2rem;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: 0.4s;
+}
+
+.dining-card:hover .arrow-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ================= RESPONSIVE ADJUSTMENTS ================= */
+
+@media screen and (max-width: 900px) {
+    .dining-grid {
+        grid-template-columns: repeat(2, 1fr); /* عمودين في التابلت */
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hero-2 {
+        padding: 60px 20px;
+    }
+    
+    .dining-grid {
+        grid-template-columns: 1fr; /* عمود واحد في الموبايل */
+        gap: 20px;
+    }
+
+    .dining-card {
+        flex-direction: row; /* جعل الكارت أفقي في الموبايل ليكون أجمل */
+        text-align: left;
+        padding: 20px;
+        align-items: center;
+    }
+
+    .dining-card .d-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 1.5rem;
+        margin-bottom: 0;
+        margin-right: 20px;
+    }
+
+    .dining-card .arrow-icon {
+        margin-left: auto; /* دفع السهم لليمين */
+        margin-top: 0;
+        opacity: 1; /* إظهار السهم دائماً في الموبايل */
+        transform: translateX(0);
+    }
+    
+    .dining-card p {
+        display: none; /* إخفاء الوصف الطويل في الموبايل لتوفير المساحة (اختياري) */
+    }
+    
+    .dining-card h4 {
+        margin-bottom: 0;
+        font-size: 1.2rem;
+    }
+}
+/* ================= RESPONSIVE TWEAKS FOR ABOUT US ================= */
+
+@media screen and (max-width: 768px) {
+    .hero-3 {
+        padding: 60px 5%; /* تقليل الحواشي للموبايل */
+        height: auto; /* السماح للطول بالتمدد */
+        min-height: auto;
+    }
+    
+    .section-title {
+        margin-top: 30px;
+    }
+
+    .features-grid {
+        grid-template-columns: 1fr; /* كارت واحد في كل صف */
+        gap: 20px;
+    }
+
+    .feature-card {
+        padding: 30px 20px;
+    }
+}
+/* ================= MEDIA QUERIES (RESPONSIVENESS) ================= */
+
+/* للأجهزة اللوحية والموبايل (أقل من 900px) */
+@media screen and (max-width: 900px) {
+    .menu-toggle {
+        display: block; /* إظهار زر القائمة */
+    }
+
+    .navig {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%; /* القائمة تأخذ عرض الشاشة بالكامل */
+        background: rgba(0, 0, 0, 0.95);
+        border-top: 1px solid #333;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease;
+    }
+
+    .navig.active {
+        max-height: 400px; /* فتح القائمة */
+    }
+
+    .navig ul {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 20px;
+    }
+
+    .hero-section {
+        padding: 80px 20px;
+    }
+}
+
+/* للموبايل الصغير (أقل من 600px) */
+@media screen and (max-width: 600px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .dining-options {
+        grid-template-columns: 1fr; /* عرض البطاقات واحدة تلو الأخرى */
+    }
+
+    .site-footer .cols {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-col {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .hero-3 .text-container p {
+        text-align: center; /* إلغاء الـ justify للموبايل لتسهيل القراءة */
+    }
+}

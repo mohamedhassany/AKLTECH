@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Your Order | AKLTECH</title>
+     <link rel="icon" href="AKLTECH LOGO.jpg">
+
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="../home/home.html" class="logo">AKLTECH</a>
+        <div class="navig">
+            <ul>
+                <li><a href="../home/home.html">Home</a></li>
+                <li><a href="../product/menu.html">Menu</a></li>
+                <li><a href="../profile/profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="feedback-container">
+        <h2>Your Opinion Matters <i class="fa-solid fa-star" style="font-size: 24px; color: #E4B95B;"></i></h2>
+        
+        <form id="feedbackForm">
+            <div class="form-group">
+                <label for="orderSelect">Select the order you want to rate:</label>
+                <select id="orderSelect" required>
+                    <option value="" disabled selected>Loading your orders...</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="text-align: center;">
+                <label>Rate your order:</label>
+                <div class="stars-container">
+                    <input type="radio" name="rating" id="star5" value="5" required>
+                    <label for="star5">★</label>
+                    <input type="radio" name="rating" id="star4" value="4">
+                    <label for="star4">★</label>
+                    <input type="radio" name="rating" id="star3" value="3">
+                    <label for="star3">★</label>
+                    <input type="radio" name="rating" id="star2" value="2">
+                    <label for="star2">★</label>
+                    <input type="radio" name="rating" id="star1" value="1">
+                    <label for="star1">★</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Tell us about your experience (Optional)</label>
+                
+                <p style="font-size: 14px; margin-bottom: 8px; color: #10b981; text-align: left;"><i class="fa-solid fa-thumbs-up"></i> What went well?</p>
+                <div class="tags-container" id="tagsContainerPositive" style="margin-bottom: 15px;">
+                    <div class="tag-btn" data-tag="Great Service">Great Service</div>
+                    <div class="tag-btn" data-tag="Tasty Food">Tasty Food</div>
+                    <div class="tag-btn" data-tag="Fast Delivery">Fast Delivery</div>
+                    <div class="tag-btn" data-tag="Good Vibes">Good Vibes</div>
+                    <div class="tag-btn" data-tag="High Quality">High Quality</div>
+                </div>
+
+                <p style="font-size: 14px; margin-bottom: 8px; color: #ef4444; text-align: left;"><i class="fa-solid fa-thumbs-down"></i> What could be improved?</p>
+                <div class="tags-container" id="tagsContainerNegative">
+                    <div class="tag-btn negative-tag" data-tag="Cold Food">Cold Food</div>
+                    <div class="tag-btn negative-tag" data-tag="Late Delivery">Late Delivery</div>
+                    <div class="tag-btn negative-tag" data-tag="Missing Items">Missing Items</div>
+                    <div class="tag-btn negative-tag" data-tag="Poor Service">Poor Service</div>
+                    <div class="tag-btn negative-tag" data-tag="Salty/Spicy">Too Salty/Spicy</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="commentText">Additional Comments (Optional):</label>
+                <textarea id="commentText" rows="4" placeholder="Tell us more about your experience..."></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submitBtn">Submit Feedback</button>
+        </form>
+    </div>
+        <footer class="site-footer" id="footerr">
+        <div class="footer-container">
+            <div class="footer-row">
+                
+                <div class="footer-col">
+                    <h4>Social media</h4>
+                        <a href="https://www.facebook.com/egyptelu/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/eelu_university" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/eelu.university/" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/school/egyptelu/posts/?feedView=all" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Get Help</h4>
+                    <ul>
+                        <p class="issue-text">Faced an issue?</p>
+                        <a href="mailto:projectt.teamm@gmail.com" class="contact-link">Contact Us <i class="fas fa-arrow-right"></i></a>  
+                    </ul>
+                </div>
+
+            </div>
+            
+            <hr class="footer-divider">
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="feedback.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AKLTECH - VIP Reservation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="tablereservationcss.css">
+    <link rel="icon" href="AKLTECH LOGO.jpg">
+
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.3.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <div class="page-wrapper">
+    <header>
+      <h2>Reserve Your Experience</h2>
+      <p>Explore the restaurant layout and pick your spot</p>
+    </header>
+
+    <div class="controls-wrapper">
+        <div class="view-controls">
+            <button class="view-btn" onclick="switchView('real')">
+                <i class="fa-solid fa-eye"></i> 3D Tour
+            </button>
+            <button class="view-btn active" onclick="switchView('plan')">
+                <i class="fa-solid fa-map-location-dot"></i> Select Table
+            </button>
+        </div>
+    </div>
+
+    <div class="main-layout">
+      
+      <div class="scene-column">
+        
+        <div id="real-view-container" class="view-section hidden">
+            <model-viewer 
+                src="restaurant.glb" 
+                alt="AKLTECH Restaurant 3D Model" 
+                auto-rotate camera-controls 
+                shadow-intensity="1" 
+                environment-image="neutral"
+                style="width: 100%; height: 100%; min-height: 400px; background-color: #1e293b; border-radius: 15px;">
+            </model-viewer>
+            <p class="view-hint">Drag to rotate • Scroll to zoom</p>
+        </div>
+
+        <div id="plan-view-container" class="view-section active">
+            <div class="floor-wrapper">
+                <div class="restaurant-floor" id="restaurant-floor">
+                </div>
+            </div>
+        </div>
+
+      </div>
+
+      <div class="panel-column">
+        <div class="control-panel">
+            <div class="panel-header">
+            <h3>Table Details</h3>
+            <span class="status-indicator" id="status-indicator">Select a Table</span>
+            </div>
+
+            <div id="details-content" class="details-content">
+            <div class="empty-state">
+                <i class="fa-solid fa-hand-pointer"></i>
+                <p>Hover and click on any available table to see details.</p>
+            </div>
+            </div>
+
+            <div class="legend-3d">
+            <div class="legend-item"><span class="dot available"></span> Available</div>
+            <div class="legend-item"><span class="dot selected"></span> Selected</div>
+            <div class="legend-item"><span class="dot reserved"></span> Reserved</div>
+            </div>
+
+            <div class="action-buttons">
+            <button id="backBtn" class="btn btn-secondary">Cancel</button>
+            <button id="confirmBtn" class="btn btn-primary" disabled>Confirm Booking</button>
+            </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="tablereservation.js"></script>
+</body>
+</html>
