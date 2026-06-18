@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports & Analytics - AKLTECH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="reports.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-area">
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <img src="logo.jpg" alt="AKLTECH" class="logo-img"
+                    onerror="this.src='https://via.placeholder.com/40/2563eb/fff?text=A'">
+                <h1>AKLTECH</h1>
+                <div class="sidebar-toggle" id="sidebar-arrow">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="close-sidebar" id="close-sidebar">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item" data-target="../overveiw/overveiw.html"><i class="fa-solid fa-house"></i>
+                        <span>Main Overview</span></li>
+                    <li class="nav-item" data-target="../orders/orders.html"><i class="fa-solid fa-chart-line"></i>
+                        <span>Orders & Performance</span></li>
+                    <li class="nav-item" data-target="../reservations/reservations.html"><i
+                            class="fa-solid fa-calendar-check"></i> <span>Reservations</span></li>
+                    <li class="nav-item active" data-target="#"><i class="fa-solid fa-file-invoice-dollar"></i>
+                        <span>Reports & Analytics</span></li>
+                    <li class="nav-item" data-target="../ai-module/ai.html"><i class="fa-solid fa-brain"></i> <span>AI
+                            Insights</span></li>
+                    <li class="nav-item" data-target="../menu\menu.html"><i class="fa-solid fa-utensils"></i> <span>MENU</span></li>
+                    <li class="nav-item" data-target="../feedback/feedback.html"><i class="fa-solid fa-star"></i>
+                        <span>Feedbacks</span></li>
+                </ul>
+            </nav>
+
+            <footer class="sidebar-footer">
+                <div class="user-info">
+                    <div class="avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="details">
+                        <small>Logged in as</small>
+                        <strong>Manager</strong>
+                    </div>
+                </div>
+            </footer>
+        </aside>
+
+        <div class="main-content-wrapper" id="content-wrapper">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div class="mobile-toggle" id="mobile-sidebar-toggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                    <div>
+                        <h2 id="page-title">Reports & Analytics</h2>
+                        <p class="greeting" id="greeting-text">Financial overview and business insights</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <select id="month-selector" class="input-field select-filter"
+                        style="width: auto; padding: 8px 12px;"></select>
+                    <button id="downloadReportBtn" class="btn btn-primary"><i class="fa-solid fa-file-pdf"></i> Export
+                        PDF</button>
+                    <button id="theme-toggle" class="btn btn-outline" title="Toggle Light/Dark Mode"><i
+                            class="fa-solid fa-moon"></i></button>
+                    <button id="btn-logout" class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="kpis">
+                    <div class="kpi card">
+                        <div class="kpi-icon total-orders"><i class="fa-solid fa-sack-dollar"></i></div>
+                        <div class="kpi-info">
+                            <div class="kpi-title">Monthly Revenue</div>
+                            <div class="kpi-value" id="kpi-revenue">$0</div>
+                            <div class="kpi-delta" id="kpi-revenue-growth">0% vs prev month</div>
+                        </div>
+                    </div>
+                    <div class="kpi card">
+                        <div class="kpi-icon reservations"><i class="fa-solid fa-receipt"></i></div>
+                        <div class="kpi-info">
+                            <div class="kpi-title">Monthly Orders</div>
+                            <div class="kpi-value" id="kpi-orders">0</div>
+                            <div class="kpi-delta" id="kpi-orders-growth">0% vs prev month</div>
+                        </div>
+                    </div>
+                    <div class="kpi card">
+                        <div class="kpi-icon revenue"><i class="fa-solid fa-calculator"></i></div>
+                        <div class="kpi-info">
+                            <div class="kpi-title">Avg. Order Value</div>
+                            <div class="kpi-value" id="kpi-aov">$0.00</div>
+                            <div class="kpi-delta text-muted">Selected Month</div>
+                        </div>
+                    </div>
+                    <div class="kpi card">
+                        <div class="kpi-icon danger-icon"><i class="fa-solid fa-tags"></i></div>
+                        <div class="kpi-info">
+                            <div class="kpi-title">Total Discounts Given</div>
+                            <div class="kpi-value" id="kpi-discounts">$0.00</div>
+                            <div class="kpi-delta text-muted">Selected Month</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="insights-row mt-4 mb-4">
+                    <div class="insight-card card border-primary">
+                        <div class="insight-icon"><i class="fa-solid fa-trophy text-primary"></i></div>
+                        <div class="insight-content">
+                            <h4>All-Time Best Month</h4>
+                            <p id="insight-best-month">Loading...</p>
+                            <small id="insight-best-reason" class="text-muted">Loading reason...</small>
+                        </div>
+                    </div>
+                    <div class="insight-card card border-danger">
+                        <div class="insight-icon"><i class="fa-solid fa-triangle-exclamation text-danger"></i></div>
+                        <div class="insight-content">
+                            <h4>Menu Warning</h4>
+                            <p id="insight-menu-warning">Loading...</p>
+                            <small class="text-muted">Consider removing or promoting</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-filters">
+                    <button class="filter-btn active" data-filter="all">All Analytics</button>
+                    <button class="filter-btn" data-filter="trends"><i class="fa-solid fa-chart-line"></i> Financial
+                        Trends</button>
+                    <button class="filter-btn" data-filter="distribution"><i class="fa-solid fa-chart-pie"></i>
+                        Distributions</button>
+                    <button class="filter-btn" data-filter="performance"><i class="fa-solid fa-utensils"></i> Menu
+                        Performance</button>
+                </div>
+
+                <div class="charts-row">
+                    <div class="chart-card card col-span-12" data-category="trends">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-timeline"></i> All-Time Yearly Revenue</h3>
+                            <i class="fa-solid fa-chevron-up toggle-chart" title="Toggle Chart"></i>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="allYearsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card card col-span-8" data-category="trends">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-scale-balanced"></i> Yearly Revenue Comparison (Monthly)</h3>
+                            <i class="fa-solid fa-chevron-up toggle-chart" title="Toggle Chart"></i>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="yearlyCompChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="chart-card card col-span-4 financial-summary" data-category="trends">
+                        <div class="card-header">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <h3><i class="fa-solid fa-file-invoice-dollar"></i> Breakdown</h3>
+                                <span class="badge" id="breakdown-month-badge">Month</span>
+                            </div>
+                            <i class="fa-solid fa-chevron-up toggle-chart" title="Toggle Chart"></i>
+                        </div>
+                        <div class="summary-list">
+                            <div class="summary-item">
+                                <span>Subtotal</span>
+                                <strong id="sum-subtotal">$0.00</strong>
+                            </div>
+                            <div class="summary-item">
+                                <span>Tax</span>
+                                <strong id="sum-tax">$0.00</strong>
+                            </div>
+                            <div class="summary-item">
+                                <span>Delivery Fees</span>
+                                <strong id="sum-delivery">$0.00</strong>
+                            </div>
+                            <div class="summary-item discount">
+                                <span>Discounts</span>
+                                <strong id="sum-discount">-$0.00</strong>
+                            </div>
+                            <div class="summary-divider"></div>
+                            <div class="summary-item total">
+                                <span>Net Total Revenue</span>
+                                <strong id="sum-total">$0.00</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+<div class="charts-row mt-4">
+    <div class="chart-card card col-span-6" data-category="distribution">
+        <div class="card-header">
+            <h3><i class="fa-solid fa-chart-pie"></i> Revenue by Order Type</h3>
+            <i class="fa-solid fa-chevron-up toggle-chart" title="Toggle Chart"></i>
+        </div>
+        <div class="chart-wrapper doughnut-wrapper">
+            <canvas id="revenueTypeChart"></canvas>
+        </div>
+    </div>
+                <div class="charts-row mt-4 mb-4">
+                    <div class="chart-card card col-span-6" data-category="performance">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-arrow-up-right-dots text-success"></i> Top 5 Selling Dishes</h3>
+                            <i class="fa-solid fa-chevron-up toggle-chart" title="Toggle Chart"></i>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="topDishesChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card card col-span-6" data-category="performance">
+                        <div class="card-header">
+                            <h3><i class="fa-solid fa-arrow-down-right-dots text-danger"></i> Bottom 5 Selling Dishes
+                            </h3>
+                            <i class="fa-solid fa-chevron-up toggle-chart" title="Toggle Chart"></i>
+                        </div>
+                        <div class="chart-wrapper">
+                            <canvas id="bottomDishesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="reports.js"></script>
+</body>
+
+</html>

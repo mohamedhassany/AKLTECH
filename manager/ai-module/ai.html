@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Insights - AKLTECH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <link rel="stylesheet" href="ai.css">
+</head>
+
+<body>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-area">
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <img src="logo.jpg" alt="AKLTECH" class="logo-img">
+                <h1>AKLTECH</h1>
+                <div class="sidebar-toggle" id="sidebar-arrow">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="close-sidebar" id="close-sidebar">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item" data-target="../overveiw/overveiw.html"><i class="fa-solid fa-house"></i>
+                        <span>Main Overview</span></li>
+                    <li class="nav-item" data-target="../orders/orders.html"><i class="fa-solid fa-chart-line"></i>
+                        <span>Orders & Performance</span></li>
+                    <li class="nav-item" data-target="../reservations/reservations.html"><i
+                            class="fa-solid fa-calendar-check"></i> <span>Reservations</span></li>
+                    <li class="nav-item" data-target="../reports/reports.html"><i
+                            class="fa-solid fa-file-invoice-dollar"></i> <span>Reports & Analytics</span></li>
+                    <li class="nav-item active" data-target="#"><i class="fa-solid fa-brain"></i> <span>AI
+                            Insights</span></li>
+                            <li class="nav-item" data-target="../menu\menu.html"><i class="fa-solid fa-utensils"></i> <span>MENU</span></li>
+                    <li class="nav-item" data-target="../feedback/feedback.html"><i class="fa-solid fa-star"></i>
+                        <span>Feedbacks</span></li>
+                </ul>
+            </nav>
+
+            <footer class="sidebar-footer">
+                <div class="user-info">
+                    <div class="avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="details">
+                        <small>Logged in as</small>
+                        <strong>Manager</strong>
+                    </div>
+                </div>
+            </footer>
+        </aside>
+
+        <div class="main-content-wrapper" id="content-wrapper">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div class="mobile-toggle" id="mobile-sidebar-toggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                    <div>
+                        <h2 id="page-title">AI Insights & Predictions</h2>
+                        <p class="greeting" id="greeting-text">Your intelligent business partner</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <button id="theme-toggle" class="btn btn-outline"><i class="fa-solid fa-moon"></i></button>
+                    <button id="btn-logout" class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                        Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <div class="kpis">
+                    <div class="kpi card">
+                        <div class="kpi-icon revenue"><i class="fa-solid fa-chart-line"></i></div>
+                        <div class="kpi-info">
+                            <div class="kpi-title">Next 7 Days Forecast</div>
+                            <div class="kpi-value" id="kpi-week-forecast">...</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi card">
+                        <div class="kpi-icon reservations"><i class="fa-solid fa-calendar-days"></i></div>
+                        <div class="kpi-info">
+                            <div class="kpi-title">Next 30 Days Forecast</div>
+                            <div class="kpi-value" id="kpi-month-forecast">...</div>
+                        </div>
+                    </div>
+
+                    <div class="kpi card">
+                        <div class="kpi-icon total-orders"><i class="fa-solid fa-coins"></i></div>
+                        <div class="kpi-info">
+                            <div class="kpi-title">Next Year Forecast</div>
+                            <div class="kpi-value" id="kpi-year-forecast">...</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-4" style="padding-bottom: 5px;">
+                    <div class="table-header">
+                        <h3><i class="fa-solid fa-chart-area text-primary"></i> Revenue Forecast (Actual vs Predicted)</h3>
+                        <p class="chart-desc">Visualizes historical sales against AI-generated future predictions to help track long-term business growth.</p>
+                    </div>
+                    <div id="timeline-chart"></div>
+                </div>
+
+                <div class="charts-grid mt-4">
+                    <div class="card" style="padding-bottom: 5px;">
+                        <div class="table-header">
+                            <h3><i class="fa-solid fa-code-compare text-primary"></i> Year-over-Year Growth</h3>
+                            <p class="chart-desc">Compares current year's monthly performance with the previous year to identify seasonal trends.</p>
+                        </div>
+                        <div id="yoy-chart"></div>
+                    </div>
+                    
+                    <div class="card" style="padding-bottom: 5px;">
+                        <div class="table-header">
+                            <h3><i class="fa-solid fa-chart-column text-primary"></i> Average Sales by Day</h3>
+                            <p class="chart-desc">Highlights the busiest days of the week to assist in optimizing staff scheduling and inventory preparation.</p>
+                        </div>
+                        <div id="weekly-chart"></div>
+                    </div>
+                </div>
+
+            </section>
+        </div>
+    </main>
+
+    <script src="ai.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders & Performance - AKLTECH</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="orders.css">
+</head>
+
+<body>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+    <main class="main-area">
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <img src="logo.jpg" alt="AKLTECH" class="logo-img" onerror="this.src='https://via.placeholder.com/40/3b82f6/fff?text=A'">
+                <h1>AKLTECH</h1>
+                <div class="sidebar-toggle" id="sidebar-arrow">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </div>
+                <div class="close-sidebar" id="close-sidebar">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item" data-target="../overveiw/overveiw.html"><i class="fa-solid fa-house"></i> <span>Main Overview</span></li>
+                    <li class="nav-item active" data-target="#"><i class="fa-solid fa-chart-line"></i> <span>Orders & Performance</span></li>
+                    <li class="nav-item" data-target="../reservations/reservations.html"><i class="fa-solid fa-calendar-check"></i> <span>Reservations</span></li>
+                    <li class="nav-item" data-target="../reports/reports.html"><i class="fa-solid fa-file-invoice-dollar"></i> <span>Reports & Analytics</span></li>
+                    <li class="nav-item" data-target="../ai-module/ai.html"><i class="fa-solid fa-brain"></i> <span>AI Insights</span></li>
+                    <li class="nav-item" data-target="../menu\menu.html"><i class="fa-solid fa-utensils"></i> <span>MENU</span></li>
+                    <li class="nav-item" data-target="../feedback/feedback.html"><i class="fa-solid fa-star"></i> <span>Feedbacks</span></li>
+                </ul>
+            </nav>
+
+            <footer class="sidebar-footer">
+                <div class="user-info">
+                    <div class="avatar"><i class="fa-solid fa-user-tie"></i></div>
+                    <div class="details">
+                        <small>Logged in as</small>
+                        <strong>Manager</strong>
+                    </div>
+                </div>
+            </footer>
+        </aside>
+
+        <div class="main-content-wrapper" id="content-wrapper">
+            <header class="topbar">
+                <div class="topbar-left">
+                    <div class="mobile-toggle" id="mobile-sidebar-toggle">
+                        <i class="fa-solid fa-bars"></i>
+                    </div>
+                    <div>
+                        <h2 id="page-title">Orders & Performance</h2>
+                        <p class="greeting" id="greeting-text">Track and manage your orders</p>
+                    </div>
+                </div>
+                <div class="topbar-right">
+                    <button id="theme-toggle" class="btn btn-outline" title="Toggle Light/Dark Mode"><i class="fa-solid fa-moon"></i></button>
+                    <button id="btn-logout" class="btn btn-danger"><i class="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+                </div>
+            </header>
+
+            <section class="content">
+                <section id="orders" class="page active-page">
+                    <div class="kpis">
+               
+                        <div class="kpi card">
+                            <div class="kpi-icon revenue"><i class="fa-solid fa-list-check"></i></div>
+                            <div class="kpi-info">
+                                <div class="kpi-title">Active Orders</div>
+                                <div class="kpi-value" id="kpi-active">0</div>
+                            </div>
+                        </div>
+                        <div class="kpi card">
+                            <div class="kpi-icon danger-icon"><i class="fa-solid fa-ban"></i></div>
+                            <div class="kpi-info">
+                                <div class="kpi-title">Cancelled Today</div>
+                                <div class="kpi-value" id="kpi-cancelled">0</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card table-card">
+                        <div class="card-header table-header">
+                            <h3><i class="fa-solid fa-receipt"></i> Order Management</h3>
+                            
+                            <div class="filter-group">
+                                <div class="search-box">
+                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                    <input type="text" id="orders-search" placeholder="Search ID or Items..." />
+                                </div>
+                                <select id="orders-filter" class="input-field select-filter">
+                                    <option value="">All Types</option>
+                                    <option value="dine_in">Dine-in</option>
+                                    <option value="take_away">Take-away</option>
+                                    <option value="delivery">Delivery</option>
+                                </select>
+                                <select id="orderFilter" class="input-field select-filter">
+                                    <option value="today">Today</option>
+                                    <option value="week">This Week</option>
+                                    <option value="month">This Month</option>
+                                    <option value="all">All</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="table-container">
+                            <table class="data-table" id="orders-table">
+                                <thead>
+                                    <tr>
+                                        <th class="sortable" data-sort="id">Order ID <i class="fa-solid fa-sort"></i></th>
+                                        <th class="sortable" data-sort="type">Type <i class="fa-solid fa-sort"></i></th>
+                                        <th class="sortable" data-sort="status">Status <i class="fa-solid fa-sort"></i></th>
+                                        <th class="sortable" data-sort="total">Total <i class="fa-solid fa-sort"></i></th>
+                                        
+                                        <th style="width: 50px; cursor: default;"></th>
+                                    </tr>
+                                </thead>
+                                </table>
+                        </div>
+                    </div>
+                </section>
+            </section>
+        </div>
+    </main>
+
+    <script src="orders.js"></script>
+</body>
+</html>

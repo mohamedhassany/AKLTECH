@@ -1,0 +1,58 @@
+[
+    {
+        "item_name": "Aalopuri",
+        "demand_level": "Low",
+        "predicted_quantity": 4,
+        "trend": "Decreasing",
+        "confidence": 0.52,
+        "recommendation": "Low predicted demand (4) for Aalopuri. Try bundles or discounts."
+    },
+    {
+        "item_name": "Sugarcane juice",
+        "demand_level": "Medium",
+        "predicted_quantity": 13,
+        "trend": "Increasing",
+        "confidence": 0.62,
+        "recommendation": "Moderate predicted demand (13) for Sugarcane juice. Consider promotions."
+    },
+    {
+        "item_name": "Panipuri",
+        "demand_level": "Low",
+        "predicted_quantity": 7,
+        "trend": "Decreasing",
+        "confidence": 0.01,
+        "recommendation": "Low predicted demand (7) for Panipuri. Try bundles or discounts."
+    },
+    {
+        "item_name": "Frankie",
+        "demand_level": "Low",
+        "predicted_quantity": 5,
+        "trend": "Decreasing",
+        "confidence": 0.37,
+        "recommendation": "Low predicted demand (5) for Frankie. Try bundles or discounts."
+    },
+    {
+        "item_name": "Vadapav",
+        "demand_level": "Medium",
+        "predicted_quantity": 12,
+        "trend": "Increasing",
+        "confidence": 0.42,
+        "recommendation": "Moderate predicted demand (12) for Vadapav. Consider promotions."
+    },
+    {
+        "item_name": "Cold coffee",
+        "demand_level": "Low",
+        "predicted_quantity": 9,
+        "trend": "Increasing",
+        "confidence": 0.01,
+        "recommendation": "Low predicted demand (9) for Cold coffee. Try bundles or discounts."
+    },
+    {
+        "item_name": "Sandwich",
+        "demand_level": "Low",
+        "predicted_quantity": 6,
+        "trend": "Decreasing",
+        "confidence": 0.26,
+        "recommendation": "Low predicted demand (6) for Sandwich. Try bundles or discounts."
+    }
+]

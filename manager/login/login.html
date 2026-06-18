@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKLTECH - Manager Sign In</title>
+    <link rel="icon" type="image/jpg" href="logo.jpg">
+    <link rel="stylesheet" href="login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <script>
+        if (localStorage.getItem('theme') === 'light') {
+            document.documentElement.classList.add('light-mode');
+        }
+    </script>
+</head>
+
+<body>
+    <button id="theme-toggle" class="theme-btn">
+        <i class="fa-solid fa-moon" id="theme-icon"></i>
+    </button>
+
+    <div class="bg-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+
+    <div class="main-layout">
+        <div class="layout-left">
+            <div class="hero-content">
+                <div class="brand-badge">AKLTECH MANAGEMENT</div>
+                <h2>Manager<br>Dashboard System</h2>
+            </div>
+        </div>
+
+        <div class="layout-right">
+            <div class="login-container" id="login-container">
+
+                <div class="system-status">
+                    <span class="pulse-dot"></span>
+                    <span>System Online <span class="version-tag">v2.4.1</span></span>
+                </div>
+
+                <div class="form-header">
+                    <h2>Manager Sign In</h2>
+                    <p>Please enter your credentials to access dashboard.</p>
+                </div>
+
+                <div id="login-error" class="alert-box" style="display: none;">
+                    <i class="fa-solid fa-circle-exclamation"></i> <span>Invalid credentials</span>
+                </div>
+
+                <form id="loginForm">
+                    <div class="input-box">
+                        <i class="fa-solid fa-user-gear input-icon"></i>
+                        <input type="text" id="username" placeholder=" " required autocomplete="off" spellcheck="false">
+                        <label for="username">Manager Username</label>
+                    </div>
+
+                    <div class="input-box">
+                        <i class="fa-solid fa-lock input-icon"></i>
+                        <input type="password" id="password" placeholder=" " required spellcheck="false">
+                        <label for="password">Password</label>
+                        <i class="fa-regular fa-eye" id="togglePassword"></i>
+                    </div>
+
+                    <button type="button" id="login-btn" class="btn-submit">
+                        Login to Dashboard <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <div class="form-footer">
+                    <div class="security-badge">
+                        <i class="fa-solid fa-shield-halved"></i> 256-bit Secure Connection
+                    </div>
+                    <p>© 2026 AKLTECH POS System. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="login.js"></script>
+</body>
+
+</html>
